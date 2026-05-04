@@ -1,460 +1,214 @@
-import Image from "next/image"
 import Link from "next/link"
 import {
-  CalendarCheck,
-  Check,
-  ClipboardList,
-  HeartPulse,
-  MessageCircle,
+  ArrowRight,
+  CheckCircle2,
+  CircleAlert,
+  FileCheck2,
+  GitBranch,
+  LockKeyhole,
+  MapPinned,
   ShieldCheck,
-  Star,
-  Truck,
+  Sparkles,
 } from "lucide-react"
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Badge } from "@/components/ui/badge"
+  BentoCard,
+  MarketingSection,
+  MiniCommandCenter,
+  PageShell,
+  SectionIntro,
+  SiteNav,
+  StatusPill,
+} from "@/components/telegen/chrome"
 import { Button } from "@/components/ui/button"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Reveal, RevealItem } from "@/components/rye/reveal"
-import { SiteNav } from "@/components/rye/site-nav"
+  compliancePillars,
+  failureModes,
+  growthLoop,
+  integrations,
+  productPillars,
+} from "@/lib/telegen/data"
 
-const includedItems = [
-  {
-    title: "Free online evaluation",
-    description: "Answer health questions from home in a few minutes.",
-    icon: ClipboardList,
-  },
-  {
-    title: "Licensed provider review",
-    description: "A clinician reviews your intake and discusses options.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Treatment if prescribed",
-    description: "Your provider determines whether medication is appropriate.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Ongoing care support",
-    description: "Get help with refills, billing, and next steps.",
-    icon: MessageCircle,
-  },
-]
+const pillarIcons = [GitBranch, Sparkles, MapPinned, LockKeyhole]
 
-const howItWorks = [
-  {
-    title: "Complete your evaluation",
-    description:
-      "Tell us about your goals, medical history, medications, allergies, and state so a provider has the right context.",
-  },
-  {
-    title: "Meet a licensed provider",
-    description:
-      "If the basic criteria fit, book a telehealth review with a clinician licensed for your state.",
-  },
-  {
-    title: "Start care if appropriate",
-    description:
-      "If prescribed, your treatment path, support, and refill workflow are managed through the Rye experience.",
-  },
-]
-
-const reasons = [
-  "No insurance required",
-  "Transparent monthly pricing",
-  "Online visit scheduling",
-  "Clinician-led decisions",
-  "Support after checkout",
-  "Provider-approved protocols",
-]
-
-const reviews = [
-  {
-    quote:
-      "I wanted a private, simple way to understand my options before committing to an appointment. Rye made the next step feel clear.",
-    name: "Maya R.",
-  },
-  {
-    quote:
-      "The pricing was easy to understand and the visit flow made it obvious that a clinician was making the decision.",
-    name: "Jordan P.",
-  },
-  {
-    quote:
-      "The intake felt more like texting than filling out a medical form. I knew what was happening at each step.",
-    name: "Elena S.",
-  },
-]
-
-const faqs = [
-  {
-    question: "Is Tirzepatide guaranteed?",
-    answer:
-      "No. Rye helps collect information and schedule a provider review. A licensed clinician decides whether any treatment is appropriate.",
-  },
-  {
-    question: "What does the monthly plan include?",
-    answer:
-      "The prototype plan includes provider review, care support, and the treatment path if prescribed. Pricing and inclusions are editable by the provider.",
-  },
-  {
-    question: "Do I need insurance?",
-    answer:
-      "This demo is built around self-pay care. Insurance is not required for the prototype flow.",
-  },
-  {
-    question: "Are compounded medications FDA-approved?",
-    answer:
-      "No. Compounded medications are not FDA-approved. They require clinician judgment, appropriate pharmacy review, and patient-specific prescribing where legally permitted.",
-  },
-]
-
-export default function Page() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <PageShell>
       <SiteNav />
-
-      <section className="bg-[var(--rye-cream)]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-8 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8 lg:py-12">
-          <Reveal className="flex flex-col gap-6">
-            <RevealItem>
-              <Badge variant="outline" className="h-8 w-fit bg-background px-3 text-sm">
-                Free online evaluation
-              </Badge>
-            </RevealItem>
-            <RevealItem className="flex flex-col gap-4">
-              <h1 className="max-w-3xl text-5xl font-semibold leading-[1] tracking-normal text-[var(--rye-ink)] sm:text-6xl lg:text-[72px]">
-                Oral Tirzepatide tablets, reviewed online
-              </h1>
-              <p className="max-w-xl text-xl leading-8 text-muted-foreground">
-                Start with a simple evaluation. If appropriate, a licensed provider can review your
-                health history and discuss a self-pay weight management plan.
-              </p>
-            </RevealItem>
-            <RevealItem className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-13 rounded-full px-8 text-base">
-                <Link href="/intake">Do I Qualify?</Link>
+      <section className="relative px-4 pb-16 pt-32 sm:px-6 lg:pb-20 lg:pt-40">
+        <div className="mx-auto grid w-full max-w-[calc(100vw-2rem)] min-w-0 items-center gap-12 sm:max-w-6xl lg:grid-cols-[0.86fr_1.14fr]">
+          <div className="w-full min-w-0 max-w-full">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/78 px-3 py-1.5 text-xs font-semibold text-muted-foreground shadow-soft backdrop-blur">
+              <span className="size-1.5 rounded-full bg-[var(--telegen-lime)]" />
+              AI revenue infrastructure for regulated cash-pay care
+            </div>
+            <h1 className="w-full max-w-[22rem] break-words font-heading text-[40px] font-normal leading-[0.94] tracking-normal text-foreground sm:max-w-3xl sm:text-7xl sm:leading-[0.9] lg:text-[88px]">
+              Revenue infrastructure for regulated cash-pay care.
+            </h1>
+            <p className="mt-7 w-full max-w-[22rem] text-base leading-7 text-muted-foreground sm:max-w-xl sm:text-lg sm:leading-8">
+              Telegen helps licensed providers launch provider-approved funnels, AI-assisted intake,
+              state-aware booking, claims review, paywall experiments, and PHI-safe attribution.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className="h-11 rounded-full bg-foreground px-5 text-background hover:bg-foreground/90">
+                <Link href="/#pilot">
+                  Request demo
+                  <ArrowRight className="size-4" />
+                </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="h-13 rounded-full bg-background px-8 text-base">
-                <Link href="#included">What&apos;s included</Link>
+              <Button asChild size="lg" variant="outline" className="h-11 rounded-full bg-white/72 px-5">
+                <Link href="/dashboard">Run attribution audit</Link>
               </Button>
-            </RevealItem>
-            <RevealItem className="grid max-w-xl grid-cols-3 gap-3">
+            </div>
+            <div className="mt-8 grid w-full max-w-full grid-cols-1 gap-3 sm:max-w-xl sm:grid-cols-3">
               {[
-                ["Plans from", "$349/mo"],
-                ["Evaluation", "$0"],
-                ["Visit", "Online"],
-              ].map(([label, value]) => (
-                <div key={label} className="border-t border-border pt-4">
-                  <div className="text-sm text-muted-foreground">{label}</div>
-                  <div className="mt-1 text-2xl font-semibold tabular">{value}</div>
+                ["CA/NV", "launch-ready states"],
+                ["0", "PHI pixels required"],
+                ["24h", "claims queue SLA"],
+              ].map(([value, label]) => (
+                <div key={label} className="rounded-lg border border-black/10 bg-white/72 p-3 shadow-soft backdrop-blur">
+                  <div className="font-heading text-3xl leading-none">{value}</div>
+                  <div className="mt-2 text-xs font-medium leading-4 text-muted-foreground">{label}</div>
                 </div>
               ))}
-            </RevealItem>
-            <RevealItem>
-              <p className="max-w-xl text-xs leading-5 text-muted-foreground">
-                Prescription treatment is not guaranteed. Compounded medications are not FDA-approved.
-              </p>
-            </RevealItem>
-          </Reveal>
-
-          <Reveal stagger={0} delay={0.18}>
-            <RevealItem variant="scale-fade">
-              <Card className="overflow-hidden py-0 shadow-sm">
-                <Image
-                  src="/images/rye/henry-style-hero.png"
-                  alt="Patient using a phone for an online clinician visit"
-                  width={1536}
-                  height={1024}
-                  priority
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </Card>
-            </RevealItem>
-          </Reveal>
+            </div>
+          </div>
+          <div className="min-w-0 overflow-hidden rounded-[32px] lg:overflow-visible">
+            <MiniCommandCenter />
+          </div>
         </div>
       </section>
 
-      <section id="included" className="border-y border-border bg-background">
-        <Reveal className="mx-auto grid max-w-7xl gap-3 px-4 py-6 sm:px-6 md:grid-cols-4 lg:px-8">
-          {includedItems.map((item) => (
-            <RevealItem key={item.title}>
-              <Card size="sm" className="h-full shadow-none" data-hoverable="true">
-                <CardContent className="flex items-start gap-3">
-                  <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--rye-sage)] text-primary">
-                    <item.icon />
+      <MarketingSection id="platform" className="pt-6">
+        <div className="rounded-[28px] border border-black/10 bg-white/70 p-4 shadow-[0_34px_120px_-72px_rgba(15,23,42,0.78)] backdrop-blur-2xl sm:p-6">
+          <div className="grid gap-3 lg:grid-cols-8">
+            {growthLoop.map((step, index) => (
+              <div key={step} className="relative rounded-xl border border-black/10 bg-white/78 p-4 shadow-soft">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
+                  {index < growthLoop.length - 1 ? <ArrowRight className="hidden size-4 text-muted-foreground lg:block" /> : null}
+                </div>
+                <div className="mt-7 text-sm font-semibold leading-5">{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <SectionIntro
+            label="Why now"
+            title="Generic tools break at the regulated growth layer."
+            detail="Cash-pay care operators need speed, but every campaign, intake, state gate, payment handoff, and attribution event has compliance consequences."
+          />
+          <div className="grid gap-3 sm:grid-cols-2">
+            {failureModes.map((mode) => (
+              <BentoCard key={mode}>
+                <div className="flex gap-3">
+                  <CircleAlert className="mt-0.5 size-5 shrink-0 text-rose-600" />
+                  <p className="text-sm leading-6 text-muted-foreground">{mode}</p>
+                </div>
+              </BentoCard>
+            ))}
+          </div>
+        </div>
+      </MarketingSection>
+
+      <MarketingSection>
+        <SectionIntro
+          align="center"
+          label="Product"
+          title="A command center for the whole ad-to-consult loop."
+          detail="Telegen makes provider approval, state routing, claims review, and first-party attribution native to the revenue workflow."
+        />
+        <div className="mt-12 grid gap-4 md:grid-cols-2">
+          {productPillars.map((pillar, index) => {
+            const Icon = pillarIcons[index]
+            return (
+              <BentoCard key={pillar.title} className="min-h-[260px]">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex size-11 items-center justify-center rounded-xl bg-foreground text-background">
+                    <Icon className="size-5" />
+                  </div>
+                  <StatusPill tone={index === 0 ? "good" : index === 1 ? "warn" : "neutral"}>{pillar.label}</StatusPill>
+                </div>
+                <h3 className="mt-8 font-heading text-4xl font-normal leading-none">{pillar.title}</h3>
+                <p className="mt-4 text-sm leading-6 text-muted-foreground">{pillar.detail}</p>
+                <div className="mt-8 font-heading text-5xl leading-none">{pillar.stat}</div>
+              </BentoCard>
+            )
+          })}
+        </div>
+      </MarketingSection>
+
+      <MarketingSection id="compliance">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
+          <SectionIntro
+            label="Compliance infrastructure"
+            title="Move fast without moving clinical control."
+            detail="Telegen is infrastructure, not the provider, pharmacy, prescriber, medical network, or merchant of record."
+          />
+          <div className="grid gap-4">
+            {compliancePillars.map((pillar, index) => (
+              <BentoCard key={pillar.title}>
+                <div className="flex gap-4">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--telegen-cyan),var(--telegen-lime))] text-foreground">
+                    {index === 0 ? <FileCheck2 className="size-5" /> : <ShieldCheck className="size-5" />}
                   </div>
                   <div>
-                    <div className="font-medium">{item.title}</div>
-                    <p className="mt-1 text-sm leading-5 text-muted-foreground">{item.description}</p>
+                    <h3 className="font-semibold">{pillar.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{pillar.detail}</p>
                   </div>
-                </CardContent>
-              </Card>
-            </RevealItem>
-          ))}
-        </Reveal>
-      </section>
-
-      <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:px-8">
-          <Reveal stagger={0} delay={0.05}>
-            <RevealItem variant="scale-fade">
-              <Card className="overflow-hidden py-0 shadow-sm">
-                <Image
-                  src="/images/rye/care-kit.png"
-                  alt="Rye care kit and support materials"
-                  width={1536}
-                  height={1024}
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </Card>
-            </RevealItem>
-          </Reveal>
-          <Reveal className="flex flex-col gap-6">
-            <RevealItem>
-              <Badge variant="secondary" className="w-fit">Monthly plan</Badge>
-            </RevealItem>
-            <RevealItem>
-              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
-                Treatment support in one clear subscription
-              </h2>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-muted-foreground">
-                Rye is designed to make the cash-pay path feel straightforward: evaluation, provider
-                review, payment, booking, and support in one guided flow.
-              </p>
-            </RevealItem>
-            <RevealItem>
-              <Card
-                className="max-w-xl border border-primary/30 bg-[var(--rye-cream)] shadow-soft"
-                data-hoverable="true"
-              >
-                <CardHeader>
-                  <CardTitle className="flex items-end gap-2 text-5xl">
-                    <span className="tabular">$349</span>
-                    <span className="pb-1 text-base font-normal text-muted-foreground">per month</span>
-                  </CardTitle>
-                  <CardDescription className="text-base leading-7">
-                    Seed pricing for the prototype. Providers can edit pricing, pharmacy route, and plan inclusions.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-3 text-sm">
-                    {reasons.slice(0, 4).map((reason) => (
-                      <div key={reason} className="flex items-center gap-2">
-                        <Check data-icon="inline-start" />
-                        {reason}
-                      </div>
-                    ))}
-                  </div>
-                  <Button asChild className="mt-6 h-12 w-full rounded-full">
-                    <Link href="/intake">Do I Qualify?</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </RevealItem>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-b border-border bg-[var(--rye-cream)]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.78fr_1.22fr] lg:px-8">
-          <Reveal>
-            <RevealItem>
-              <Badge variant="outline" className="mb-5 bg-background">How it works</Badge>
-              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">A simple path from intake to provider review</h2>
-              <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                The page intentionally moves one step at a time. Fewer choices, clear pricing, and visible
-                clinician review reduce anxiety before checkout.
-              </p>
-            </RevealItem>
-          </Reveal>
-          <Reveal className="grid gap-4 md:grid-cols-3" delay={0.18}>
-            {howItWorks.map((step, index) => (
-              <RevealItem key={step.title}>
-                <Card className="h-full bg-background shadow-none" data-hoverable="true">
-                  <CardHeader>
-                    <div className="flex size-9 items-center justify-center rounded-full bg-primary text-sm font-semibold tabular text-primary-foreground">
-                      {index + 1}
-                    </div>
-                    <CardTitle className="mt-2 text-xl">{step.title}</CardTitle>
-                    <CardDescription className="leading-6">{step.description}</CardDescription>
-                  </CardHeader>
-                </Card>
-              </RevealItem>
+                </div>
+              </BentoCard>
             ))}
-          </Reveal>
+          </div>
         </div>
-      </section>
+      </MarketingSection>
 
-      <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-8">
-          <Reveal className="flex flex-col gap-6">
-            <RevealItem>
-              <Badge variant="secondary" className="w-fit">Provider-reviewed care</Badge>
-            </RevealItem>
-            <RevealItem>
-              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
-                Your evaluation is reviewed by a licensed clinician
-              </h2>
-            </RevealItem>
-            <RevealItem>
-              <p className="text-lg leading-8 text-muted-foreground">
-                Rye keeps the clinical decision with the provider. The intake helps organize the information
-                a clinician needs before discussing whether treatment may be appropriate.
-              </p>
-            </RevealItem>
-            <RevealItem className="grid gap-3 sm:grid-cols-2">
-              {reasons.map((reason) => (
-                <div key={reason} className="flex items-center gap-2 text-sm font-medium">
-                  <Check data-icon="inline-start" />
-                  {reason}
+      <MarketingSection id="integrations">
+        <div className="rounded-[28px] border border-black/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.9),rgba(248,250,252,0.72))] p-6 shadow-lift backdrop-blur-2xl sm:p-8">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <SectionIntro
+              label="Integrations"
+              title="Connect to approved clinical, pharmacy, payment, and data paths."
+              detail="Telegen should integrate with your lawful operating stack before it tries to replace it."
+            />
+            <div className="grid gap-3 sm:grid-cols-2">
+              {integrations.map((integration) => (
+                <div key={integration} className="flex items-center gap-3 rounded-xl border border-black/10 bg-white/76 p-4 shadow-soft">
+                  <CheckCircle2 className="size-5 text-lime-700" />
+                  <span className="text-sm font-medium">{integration}</span>
                 </div>
               ))}
-            </RevealItem>
-          </Reveal>
-          <Reveal stagger={0} delay={0.1}>
-            <RevealItem variant="scale-fade">
-              <Card className="overflow-hidden py-0 shadow-sm">
-                <Image
-                  src="/images/rye/clinician-review.png"
-                  alt="Clinician reviewing an online intake on a tablet"
-                  width={1536}
-                  height={1024}
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </Card>
-            </RevealItem>
-          </Reveal>
+            </div>
+          </div>
         </div>
-      </section>
+      </MarketingSection>
 
-      <section className="border-b border-border bg-[var(--rye-cream)]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:px-8">
-          <Reveal>
-            <RevealItem>
-              <Badge variant="outline" className="mb-5 bg-background">Patient perspective</Badge>
-              <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
-                Built for people comparing online weight loss options
+      <MarketingSection id="pilot" className="pb-24">
+        <div className="relative overflow-hidden rounded-[32px] border border-black/10 bg-foreground p-8 text-background shadow-[0_40px_120px_-72px_rgba(15,23,42,0.95)] sm:p-12">
+          <div className="absolute right-[-12rem] top-[-8rem] h-72 w-[42rem] rotate-12 bg-[linear-gradient(90deg,var(--telegen-cyan),var(--telegen-lime),var(--telegen-rose))] opacity-30 blur-3xl" />
+          <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-background/60">Pilot offer</div>
+              <h2 className="mt-4 max-w-3xl font-heading text-5xl font-normal leading-none sm:text-6xl">
+                Paid attribution audit plus one provider-approved funnel.
               </h2>
-              <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                Consumer pages need to answer the buying questions fast: price, legitimacy, convenience,
-                treatment path, and what happens if the provider says no.
+              <p className="mt-5 max-w-2xl text-base leading-7 text-background/72">
+                Built for one cash-pay clinic in one launch state, with AI-assisted setup, claims review, and booked-consult reporting.
               </p>
-            </RevealItem>
-          </Reveal>
-          <Reveal className="grid gap-4 md:grid-cols-3" delay={0.16}>
-            {reviews.map((review) => (
-              <RevealItem key={review.name}>
-                <Card className="h-full bg-background shadow-none" data-hoverable="true">
-                  <CardContent>
-                    <div className="flex gap-1 text-[var(--rye-gold)]">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <Star key={index} className="fill-current" />
-                      ))}
-                    </div>
-                    <p className="mt-4 text-sm leading-6 text-muted-foreground">&ldquo;{review.quote}&rdquo;</p>
-                    <div className="mt-4 font-medium">{review.name}</div>
-                    <div className="text-sm text-muted-foreground">Prototype patient</div>
-                  </CardContent>
-                </Card>
-              </RevealItem>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-b border-border bg-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
-          <Reveal stagger={0} delay={0.05}>
-            <RevealItem>
-              <Card className="bg-[var(--rye-cream)] shadow-none">
-                <CardHeader>
-                  <CardTitle className="text-3xl">What is oral Tirzepatide?</CardTitle>
-                  <CardDescription className="text-base leading-7">
-                    Tirzepatide is commonly discussed in weight management because it targets incretin pathways
-                    involved in appetite and metabolic signaling. This demo is not medical advice; a provider
-                    must determine whether any treatment is appropriate.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck data-icon="inline-start" />
-                      Provider decision required
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Truck data-icon="inline-start" />
-                      Fulfillment shown only if prescribed
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CalendarCheck data-icon="inline-start" />
-                      Follow-up workflow after checkout
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </RevealItem>
-          </Reveal>
-          <Reveal stagger={0} delay={0.15}>
-            <RevealItem>
-              <Card className="shadow-none">
-                <CardHeader>
-                  <CardTitle className="text-3xl">Questions before you start</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Accordion type="single" collapsible defaultValue={faqs[0].question}>
-                    {faqs.map((faq) => (
-                      <AccordionItem key={faq.question} value={faq.question}>
-                        <AccordionTrigger>{faq.question}</AccordionTrigger>
-                        <AccordionContent className="leading-6 text-muted-foreground">{faq.answer}</AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </CardContent>
-              </Card>
-            </RevealItem>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-b border-border bg-[var(--rye-cream)]">
-        <Reveal className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <RevealItem className="flex max-w-2xl flex-col gap-3">
-            <Badge variant="outline" className="w-fit bg-background">For providers</Badge>
-            <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
-              Are you the clinic behind a flow like this?
-            </h2>
-            <p className="text-base leading-7 text-muted-foreground">
-              Rye is the infrastructure. See what we build for licensed cash-pay providers.
-            </p>
-          </RevealItem>
-          <RevealItem>
-            <Button asChild variant="outline" size="lg" className="h-12 self-start rounded-full bg-background px-6 lg:self-auto">
-              <Link href="/providers">For providers</Link>
+            </div>
+            <Button asChild size="lg" className="h-11 rounded-full bg-background px-5 text-foreground hover:bg-background/90">
+              <Link href="mailto:hello@telegen.health?subject=Telegen%20provider%20demo">
+                Request demo
+                <ArrowRight className="size-4" />
+              </Link>
             </Button>
-          </RevealItem>
-        </Reveal>
-      </section>
-
-      <section className="bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-10 text-xs leading-6 text-muted-foreground sm:px-6 lg:px-8">
-          This prototype is for product validation and provider sales. It does not provide medical advice,
-          guarantee eligibility, guarantee prescription approval, or represent that Rye is a medical practice,
-          pharmacy, or merchant of record for prescription medication. Compounded medications are not
-          FDA-approved and should be evaluated by licensed clinicians and qualified pharmacies.
+          </div>
         </div>
-      </section>
-    </main>
+      </MarketingSection>
+    </PageShell>
   )
 }

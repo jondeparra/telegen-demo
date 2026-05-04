@@ -1,10 +1,13 @@
+import "@fontsource/instrument-serif/latin-400.css"
 import "./globals.css"
-import { MotionRoot } from "@/components/rye/motion-root"
+import { GeistSans } from "geist/font/sans"
+
+import { MotionRoot } from "@/components/telegen/motion-root"
 
 export const metadata = {
-  title: "Rye | Cash-pay telehealth revenue optimization",
+  title: "Telegen | Revenue infrastructure for regulated cash-pay care",
   description:
-    "A provider-sales prototype for Rye, a revenue optimization platform for cash-pay telehealth funnels.",
+    "A provider-facing SaaS demo for Telegen, the regulated growth layer for cash-pay care.",
 }
 
 export default function RootLayout({
@@ -16,7 +19,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="light font-sans antialiased"
+      className={`${GeistSans.variable} light font-sans antialiased`}
     >
       <body>
         <MotionRoot>{children}</MotionRoot>

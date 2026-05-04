@@ -1,26 +1,5 @@
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { CheckoutFlow } from "@/components/rye/checkout-flow"
-import { RyeLogo } from "@/components/rye/logo"
+import { WorkflowShell } from "@/components/telegen/workflow-surfaces"
 
 export default function CheckoutPage() {
-  return (
-    <main className="min-h-screen bg-background">
-      <header className="border-b border-border">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Button asChild variant="ghost">
-            <Link href="/intake">
-              <ArrowLeft data-icon="inline-start" />
-              Intake
-            </Link>
-          </Button>
-          <RyeLogo />
-          <div className="w-[76px]" />
-        </div>
-      </header>
-      <CheckoutFlow />
-    </main>
-  )
+  return <WorkflowShell kind="paywall" />
 }
