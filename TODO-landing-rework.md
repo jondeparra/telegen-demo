@@ -1,7 +1,7 @@
-# Rye landing-page rework — TODO
+# Rye provider-page rework — TODO
 
-> Goal: position Rye as **"Agentic AI telehealth infrastructure for licensed cash-pay providers"** on a new `/providers` B2B page, while keeping `/` patient-first per `AGENTS.md`. Aimed at YC-readable clarity.
-> Author of this document: planning pass on 2026-05-04. Source-of-truth research lives at `../Research/`. Strategy contract lives at `AGENTS.md` — do not modify.
+> Goal: position Rye as the first product for Telegen's updated thesis: **AI revenue infrastructure for regulated cash-pay care**. The `/providers` B2B page can use "Agentic AI telehealth infrastructure for licensed cash-pay providers" as investor/category framing, but the concrete wedge should be compliant funnels, AI-assisted intake setup, state-aware booking, claims review, and revenue attribution. Keep `/` patient-first per `AGENTS.md`.
+> Author of this document: planning pass on 2026-05-04. Source-of-truth research lives at `../Research/`. Strategy contract lives at `AGENTS.md`.
 
 ---
 
@@ -14,9 +14,9 @@ Six forcing questions, applied to Rye as it stands. Stage = pre-product / protot
 - **Q3 — Desperate specificity.** Buyer category is clear (cash-pay GLP-1 / hormone / longevity operators, CA/NV/UT first). Buyer *human* is not. Before `/providers` ships, name 3 specific clinic operators we'd email about a pilot. Otherwise the page is theater.
 - **Q4 — Narrowest wedge.** What's payable this week is **not** "the platform." It's *one* outcome: a paid attribution audit + a single Henry-style funnel stood up for one named clinic in 30 days. The `Apply for pilot` CTA must reflect this; do not promise platform self-serve.
 - **Q5 — Observation & surprise.** No real users on the prototype yet. Defer until pilot.
-- **Q6 — Future-fit.** Tailwind: FDA March-2026 warning letters to 30 telehealth marketers, GLP-1 enforcement tightening, agentic-AI healthcare funded but crowded. Rye becomes more essential as compliance + attribution pressure rises — *only if it stays infrastructure*. Provider-of-record, pharmacy, prescriber are off-limits.
+- **Q6 — Future-fit.** Tailwind: FDA March-2026 warning letters to 30 telehealth marketers, GLP-1 enforcement tightening, agentic-AI healthcare funded but crowded. Rye becomes more essential as compliance + attribution pressure rises — *only if it stays revenue infrastructure*. Provider-of-record, pharmacy, prescriber, medical network, and merchant-of-record are off-limits.
 
-**Verdict.** The wedge is sharper than the headline. Lead `/providers` with the specific pilot offer ("paid attribution audit + one funnel for one clinic in 30 days"), and use *Agentic AI telehealth infrastructure* as the why-now narrative *behind* that wedge — not as a self-serve promise.
+**Verdict.** The wedge is sharper than the category phrase. Lead `/providers` with the specific pilot offer ("paid attribution audit + one funnel for one clinic in 30 days"), and use *Agentic AI telehealth infrastructure* as the why-now narrative *behind* that wedge — not as a self-serve promise.
 
 ---
 
@@ -26,7 +26,7 @@ Six forcing questions, applied to Rye as it stands. Stage = pre-product / protot
 |---|---|---|---|
 | 1 | `app/layout.tsx` hardcodes `className="light"` while `app/globals.css:93–125` defines a full `.dark` palette that is unreachable. Dead config. | `app/layout.tsx:19`, `app/globals.css:93` | **Stretch:** delete the `.dark` block. Light-only per `AGENTS.md`. |
 | 2 | `components/rye/product-visual.tsx` and `components/rye/section-heading.tsx` appear underused. | `components/rye/*` | Reuse on `/providers`, or delete. Don't ship the dead variants. |
-| 3 | `package.json` has no `ai` / `@ai-sdk/*` / agent runtime. The locked headline ("Agentic AI…") is positioning ahead of code. | `package.json` | Acceptable for a YC prototype — but the page must never overclaim live capability. See copy traps in §8. |
+| 3 | `package.json` has no `ai` / `@ai-sdk/*` / agent runtime. The category phrase ("Agentic AI…") is positioning ahead of code. | `package.json` | Acceptable for a YC prototype — but the page must never overclaim live capability. See copy traps in §8. |
 | 4 | `/thanks` AI support chat is hardcoded (no real backend). | `app/thanks/page.tsx` | Note in copy that the assistant is a demo. No fix needed now. |
 | 5 | Compliance-critical line on `/checkout` is on-message: *"Payment does not guarantee a prescription. A licensed clinician makes all medical decisions."* | `components/rye/checkout-flow.tsx` | Keep verbatim. Mirror the same language pattern on `/providers`. |
 | 6 | Hero on `/` is on-message ("Oral Tirzepatide tablets, reviewed online"). | `app/page.tsx:135` | Do **not** put "Agentic AI telehealth infrastructure" anywhere on `/`. |
@@ -37,8 +37,10 @@ Six forcing questions, applied to Rye as it stands. Stage = pre-product / protot
 
 ## 3. Locked positioning
 
-- `/providers` hero (h1, exact): **"Agentic AI telehealth infrastructure for licensed cash-pay providers."**
-- `/providers` sub: **"Launch compliant patient funnels, AI-assisted intake, booking, and revenue attribution — in days."**
+- Company thesis: **"AI revenue infrastructure for regulated cash-pay care."**
+- `/providers` hero (h1): **"Launch compliant cash-pay telehealth funnels in days."**
+- `/providers` sub: **"Rye helps licensed providers build patient funnels, AI-assisted intake setup, state-aware booking, claims review, and PHI-safe revenue attribution — without becoming the provider, pharmacy, prescriber, or merchant of record."**
+- Category/investor line can appear lower on the page: **"Agentic AI telehealth infrastructure for licensed cash-pay providers."**
 - `/providers` primary CTA: **"Apply for pilot"** (mailto / Tally — no inline platform self-serve).
 - `/providers` secondary CTA: **"See the dashboard"** → `/dashboard`.
 - `/` keeps current patient-first hero ("Oral Tirzepatide tablets, reviewed online"). **Never** put the Agentic AI phrase on `/`.
@@ -48,7 +50,7 @@ Six forcing questions, applied to Rye as it stands. Stage = pre-product / protot
 ## 4. `/providers` page outline (PR 1 builds the **bold** sections)
 
 1. **Site nav** — reuse `components/rye/site-nav.tsx`. Add `variant="providers"` so the right-side CTA reads `Apply for pilot` instead of `Do I Qualify?`. No new file.
-2. **Hero** — locked headline + sub. Two CTAs (above). Right-side image: reuse `/public/images/rye/clinician-review.png`.
+2. **Hero** — thesis-aligned headline + sub. Two CTAs (above). Right-side image: reuse `/public/images/rye/clinician-review.png`.
 3. Who this is for — 4 inline `Badge`s in a `Card`: `Peptide` / `GLP-1` / `Hormone` / `Longevity`. (PR 2)
 4. **Three-pillar product story — Acquire / Convert / Attribute** — 3 × shadcn `Card`. Pulls new `providerPillars` from `lib/rye/data.ts` (§6).
 5. **Live patient-flow strip** — 5 deep-link cards: `/`, `/intake`, `/checkout`, `/book`, `/thanks`. Frame as "What Rye builds for your clinic." Each card uses 2–3 lines from existing `chatSteps` / `treatmentPlans` / `bookingSlots` as a static preview.
@@ -68,7 +70,7 @@ Six forcing questions, applied to Rye as it stands. Stage = pre-product / protot
 - **Copy:**
   - Eyebrow `Badge`: `For providers`
   - Headline (h2): `Are you the clinic behind a flow like this?`
-  - Sub: `Rye is the infrastructure. See what we build for licensed cash-pay providers.`
+  - Sub: `Rye is the revenue infrastructure. See what we build for licensed cash-pay providers.`
   - Single ghost/outline `Button` → `/providers`, label `For providers →`
 - **Visual:** match the existing section padding (`py-16`), use `bg-[var(--rye-cream)]` to differentiate from the FAQ section.
 
@@ -122,7 +124,7 @@ Suggested `providerFaqs` questions:
 Run `rg -i 'phrase'` across `app/providers/page.tsx` before merging — should return zero matches.
 
 - `Get patients prescribed faster` / `Increase prescriptions` / `Guaranteed Tirzepatide` — implies guaranteed Rx.
-- `AI clinician` / `AI doctor` / `autonomous care` / `agents that practice medicine` — collides with Hippocratic AI; reads as practicing medicine.
+- `AI clinician` / `AI doctor` / `autonomous care` / `agents that practice medicine` — collides with clinical-agent companies; reads as practicing medicine.
 - `Operate your clinic on autopilot` / `agents that run your front office` — Cenote / Saga lane; overlaps regulated activity.
 - `HIPAA compliant` as a marketing badge — say specifics (`PHI-safe event names`, `state-aware routing`, `provider approval before publish`). HIPAA is a posture, overclaim is exposure.
 - `FDA-approved compounded GLP-1` / `safe, no side effects` / `lose X lbs guaranteed` — research-flagged copy traps.
@@ -169,7 +171,7 @@ curl -sS -I http://127.0.0.1:3000/providers  # expect 200
 Manual walk:
 1. `/` loads, hero unchanged, scroll to bottom — "For providers" band sits above the disclaimer.
 2. Click `For providers →` → `/providers` loads.
-3. `/providers` hero reads "Agentic AI telehealth infrastructure for licensed cash-pay providers."
+3. `/providers` hero reflects the concrete wedge: compliant cash-pay telehealth funnels, AI-assisted intake setup, booking, claims review, and attribution.
 4. Click each of the 5 flow-strip cards → confirm `/`, `/intake`, `/checkout`, `/book`, `/thanks` load with no console errors.
 5. Click "Open the live dashboard" → `/dashboard` loads.
 6. Click "Apply for pilot" → mailto opens (or Tally URL).
@@ -181,7 +183,7 @@ Manual walk:
 
 ## 11. YC framing notes (for the eventual application)
 
-- **Category:** "Agentic AI telehealth infrastructure" is the surface; the wedge is "patient-acquisition + compliance + revenue attribution for licensed cash-pay providers." Both must appear in any application — the surface alone collides with Cenote (YC), Saga AI (W26), Hippocratic AI, Bonsai Health (acquired by ModMed Apr 2026).
+- **Category:** "Agentic AI telehealth infrastructure" is the surface; the company thesis is "AI revenue infrastructure for regulated cash-pay care"; the wedge is "patient acquisition + compliant intake + state-aware booking + claims review + revenue attribution for licensed cash-pay providers." All three must appear in any application — the surface alone collides with clinical-agent and healthcare-automation companies.
 - **Why now:** FDA enforcement (March 2026), GLP-1 cash-pay growth, YC W26 healthcare-AI thesis.
 - **Founder edge:** Henry Meds operating experience (call out in application).
 - **One-liner:** "We build the patient-acquisition spine for licensed cash-pay clinics — compliant funnels, AI-assisted intake, booking, and revenue attribution, in days, without an engineering team."

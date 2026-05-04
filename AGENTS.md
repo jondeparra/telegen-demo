@@ -4,11 +4,21 @@
 
 This repo is the Rye prototype app for Telegen.
 
-Rye is a provider-sales prototype for solo doctors and med spas that want Henry Meds / MEDVi-style cash-pay telehealth storefronts without building ad funnels, landing pages, intake, booking, payments, attribution, and compliance review tooling from scratch.
+Telegen thesis:
+
+> AI revenue infrastructure for regulated cash-pay care.
+
+Rye is the first provider-sales prototype for this thesis. It is for licensed cash-pay providers, med spas with clinician oversight, and telehealth operators that want Henry Meds / MEDVi-style growth workflows without building ad funnels, landing pages, intake, booking, payment handoff, attribution, and compliance review tooling from scratch.
 
 The strategic wedge is:
 
-> Superwall for cash-pay telehealth: launch patient acquisition funnels, test offers and intake flows, attribute revenue, and improve booking/subscription conversion.
+> The patient-acquisition spine for licensed cash-pay clinics: compliant funnels, AI-assisted intake setup, state-aware booking, claims review, and PHI-safe revenue attribution.
+
+Investor-facing shorthand:
+
+> Agentic AI telehealth infrastructure for licensed cash-pay providers.
+
+Use the investor shorthand carefully. It is category narrative, not permission to imply AI doctors, autonomous care, or self-serve clinical automation.
 
 Patient-facing prototype:
 - Consumer landing page for oral Tirzepatide / GLP-1 weight management care.
@@ -40,7 +50,11 @@ Read these before making strategy, copy, compliance, or page-architecture change
 
 Primary positioning:
 
-> Revenue optimization infrastructure for licensed cash-pay telehealth providers.
+> AI revenue infrastructure for regulated cash-pay care.
+
+Product positioning:
+
+> Rye helps licensed cash-pay providers launch compliant patient funnels, AI-assisted intake, booking, claims review, and revenue attribution in days.
 
 Provider-facing shorthand:
 
@@ -56,6 +70,8 @@ Do not position Rye as:
 - a prescriber;
 - a research-chemical seller;
 - a guaranteed-prescription storefront;
+- a turnkey medical network;
+- an autonomous clinical agent;
 - a true merchant of record unless payment/legal work has been completed.
 
 ## Tech Stack
@@ -138,6 +154,8 @@ Use ethical marketing psychology:
 
 Do not over-index on provider/platform language on the patient page. Terms like attribution, campaign optimization, Superwall, revenue lift, and PHI-safe analytics belong in `/dashboard` or provider-facing sections.
 
+Do not put "Agentic AI telehealth infrastructure" in the patient-facing hero. That phrase is for `/providers`, sales collateral, and investor framing.
+
 ## Patient Flow Requirements
 
 Routes currently used:
@@ -185,6 +203,8 @@ Keep these concepts visible:
 
 Measure lift as bookings and paid treatment-review starts, not prescriptions.
 
+The dashboard should make the thesis concrete: Rye improves the regulated growth loop from ad click to intake completion to paid treatment-review start to booked consult, while keeping clinical decisions with licensed providers.
+
 ## Compliance Guardrails
 
 This project is health-adjacent and prescription-adjacent. Be conservative.
@@ -195,11 +215,13 @@ Always preserve these ideas in copy and flows:
 - Telehealth should be state-aware.
 - Compounded medications are not FDA-approved.
 - Rye is infrastructure, not the provider/pharmacy/prescriber.
+- Rye is not the medical network or pharmacy backend.
 - Avoid implying FDA approval for compounded GLP-1s.
 - Avoid selling research chemicals.
 - Avoid product claims that promise weight loss, safety, no side effects, or guaranteed outcomes.
 - Avoid direct checkout for medication before clinical review in real MVP framing.
 - Avoid sending PHI-bearing or treatment-specific events to ad platforms.
+- Avoid making compounded GLP-1 economics the whole thesis. The durable category is regulated cash-pay care.
 
 Safer patient copy examples:
 - "Start with a free online evaluation."
@@ -279,6 +301,7 @@ Provider-facing tone:
 - attribution;
 - privacy-safe analytics;
 - compliance-aware growth.
+- concrete pilot-first language: attribution audit, one funnel, one provider, one state.
 
 Do not copy competitor text verbatim. Use competitor pages for structure and category expectations, then rewrite for Rye.
 
@@ -299,4 +322,3 @@ Ask clarifying questions when ambiguity could cause expensive rework, especially
 - whether generated imagery should include medication objects;
 - whether a feature is prototype-only or MVP-bound;
 - whether legal/payment claims should be shown publicly.
-

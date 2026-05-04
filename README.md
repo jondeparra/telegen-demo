@@ -1,21 +1,27 @@
-# Next.js template
+# Rye prototype
 
-This is a Next.js template with shadcn/ui.
+Rye is the first product prototype for Telegen.
 
-## Adding components
+Telegen thesis:
 
-To add components to your app, run the following command:
+> AI revenue infrastructure for regulated cash-pay care.
+
+Rye helps licensed cash-pay providers launch compliant patient funnels, AI-assisted intake setup, state-aware booking, claims review, payment handoff, and PHI-safe revenue attribution without becoming the provider, pharmacy, prescriber, or merchant of record.
+
+## Stack
+
+- Next.js App Router
+- Bun
+- shadcn/ui
+- Tailwind CSS
+- Mocked AI chat, structured for future AI SDK integration
+
+## Commands
 
 ```bash
-npx shadcn@latest add button
-```
-
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
+bun install
+bun run dev
+bun run typecheck
+bun run lint
+bun run build
 ```
